@@ -1,5 +1,20 @@
 /* global Vue, VueRouter, axios */
 
+Vue.component('message', {
+  props: ['title', 'body'],
+
+  template: `
+    <article class="message container">
+      <div class="message-header">
+        {{ title }}
+      </div>
+      <div class="message-body">
+        {{ body }}
+      </div>
+    </article>
+  `
+});
+
 Vue.component('task-list', {
   template: '<div><task v-for="task in tasks">{{ task.description }}</task></div>',
 
