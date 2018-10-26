@@ -3,16 +3,29 @@
 Vue.component('message', {
   props: ['title', 'body'],
 
+  data() {
+    return {
+      isVisible: true
+    };
+  },
+
   template: `
-    <article class="message container">
+    <article class="message container" v-show="isVisible">
       <div class="message-header">
         {{ title }}
+        <button class="delete" aria-label="delete" @click="hideMessage"></button>
       </div>
       <div class="message-body">
         {{ body }}
       </div>
     </article>
-  `
+  `,
+
+  methods: {
+    hideMessage() {
+      this.isVisible = false;
+    }
+  }
 });
 
 Vue.component('task-list', {
